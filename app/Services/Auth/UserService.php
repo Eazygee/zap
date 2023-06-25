@@ -3,8 +3,6 @@
 namespace App\Services\Auth;
 
 use App\Models\User;
-use App\Services\Media\FileService;
-use App\Services\Notifications\AppMailerService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;

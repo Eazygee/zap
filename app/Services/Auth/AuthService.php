@@ -2,14 +2,8 @@
 
 namespace App\Services\Auth;
 
-use App\Constants\AppConstants;
-use App\Exceptions\PinException;
 use App\Exceptions\UserException;
-use App\Models\Pin;
 use App\Models\User;
-use App\Services\Notifications\AppMailerService;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;

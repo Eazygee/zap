@@ -4,9 +4,7 @@ namespace App\Helpers;
 use Illuminate\Http\Request;
 use App\Helpers\ApiConstants;
 use Exception;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Validation\ValidationException;
-use Intervention\Image\Facades\Image as Image;
 
 
 class ApiHelper
@@ -87,47 +85,4 @@ class ApiHelper
         return $getUser ? auth("api")->user() : auth("api");
     }
 
-
-
-    static function collect_pagination(LengthAwarePaginator $pagination, $appendQuery = true)
-    {
-        $request = request();
-        unset($request["token"]);
-        if ($appendQuery) {
-            $pagination->appends($request->query());
-        }
-        $all_pg_data = $pagination->toArray();
-        unset($all_pg_data['links']); // remove links
-        unset($all_pg_data['data']); // remove old data mapping
-
-        $buildResponse['pagination_meta'] = $all_pg_data;
-        $buildResponse['pagination_meta']["can_load_more"] = $all_pg_data["to"] < $all_pg_data["total"];
-        $buildResponse['data'] = $pagination->getCollection();
-        return $buildResponse;
-    }
-
-
-
-    static function resizeImage($path, $width = null, $height = null)
-    {
-        $image_info = getimagesize($path);
-
-        if (empty($width)) {
-            $width = $image_info[0];
-            if ($width % 2 == 1) {
-                $width += 1;
-            }
-        }
-
-        if (empty($height)) {
-            $height = $image_info[1];
-            if ($height % 2 == 1) {
-                $height += 1;
-            }
-        }
-        // create instance
-        $img = Image::make($path);
-        // resize image to fixed size
-        $img->resize($width, $height)->save($path);
-    }
 }

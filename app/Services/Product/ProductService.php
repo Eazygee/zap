@@ -3,9 +3,7 @@
 namespace App\Services\Product;
 
 use App\Constants\General\StatusConstants;
-use App\Exceptions\ProductException;
 use App\Models\Product;
-use App\Models\Store;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -44,12 +42,6 @@ class ProductService
         $product = Product::find($id);
         $product->update($data);
         return $product->refresh();
-    }
-
-    public static function delete($id): void
-    {
-        $product = Product::find($id);
-        $product->delete();
     }
 
     public static function generateReference(){

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\Constants;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -39,10 +38,4 @@ class OrderItem extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function scopeSearch($query, $value)
-    {
-        $query->whereHas("order" , function(Builder $query) use($value) {
-            $query->where("reference" , "LIKE", "%$value%");
-        });
-    }
 }

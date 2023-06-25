@@ -5,7 +5,6 @@ namespace App\Services\Order;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
-use App\Services\Product\ProductService;
 
 class OrderItemsService
 {

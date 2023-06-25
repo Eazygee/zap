@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Delivery\DeliveryAddressResource;
 use App\Models\DeliveryAddress;
 use Exception;
-use Illuminate\Http\Request;
 
 class DeliveryAddressController extends Controller
 {

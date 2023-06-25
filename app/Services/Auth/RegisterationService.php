@@ -2,11 +2,7 @@
 
 namespace App\Services\Auth;
 
-use App\Constants\AppConstants;
-use App\Constants\StatusConstants;
 use App\Models\User;
-use App\Notifications\Auth\SignupNotification;
-use App\Services\Portfolio\PortfolioService;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterationService

@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Product\ProductResource;
 use App\Models\Product;
 use Exception;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
