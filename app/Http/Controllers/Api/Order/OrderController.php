@@ -39,6 +39,21 @@ class OrderController extends Controller
         }
     }
 
+    public function update(Request $request, $id){
+        try {
+            $data = $request->all();
+            $data["user_id"] = auth()->id();
+            $order = OrderService::update($data, $id);
+            $data = OrderResource::make($order);
+            return ApiHelper::validResponse("Order updated successfully", $data);
+        } catch (OrderException $e) {
+            return ApiHelper::problemResponse($e->getMessage(), ApiConstants::BAD_REQ_ERR_CODE, null, $e);
+        }catch (Exception $e) {
+            $message = 'Something went wrong while processing your request.';
+            return ApiHelper::problemResponse($message, ApiConstants::BAD_REQ_ERR_CODE, null, $e);
+        }
+    }
+
     public function single($id){
         try {
             $order = OrderService::getById($id);

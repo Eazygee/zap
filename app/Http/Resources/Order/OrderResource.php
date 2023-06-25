@@ -23,6 +23,8 @@ class OrderResource extends JsonResource
             "items" => OrderItemsResource::collection($this->items),
             "delivery_address" => DeliveryAddressResource::make($this->deliveryAddress),
             "reference" => $this->reference,
+            "created_at" => $this->created_at,
+            "updated_at" => $this->updated_at,
         ];
     }
 }
