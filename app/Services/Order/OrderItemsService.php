@@ -40,7 +40,6 @@ class OrderItemsService
             $quantity = $item["quantity"];
             $item_unit_price = $product->price;
             $getTotal = $quantity * $item_unit_price;
-            dd($getTotal);
             OrderItem::where("order_id", $order->id)->update([
                 "product_id" => $product->id,
                 "product_name" => $product->name,
